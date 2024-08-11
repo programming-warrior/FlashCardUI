@@ -5,10 +5,16 @@ import RightArrow from './Components/RightArrow';
 import LeftArrow from "./Components/LeftArrow";
 import axios from 'axios';
 
+interface DataType{
+  id:string,
+  question:string,
+  answer:string,
+}
+
 function App() {
 
   const BACKEND_URL=import.meta.env.VITE_BACKEND_URL;
-  const [data,setData]=useState([]);
+  const [data,setData]=useState<DataType[]>([]);
 
   const [current, setCurrent] = useState(0);
 
@@ -16,7 +22,7 @@ function App() {
     async function fetchData(){
       const res=await axios.get(`${BACKEND_URL}/api/fetch`);
       if(res.status==200 || res.status==201){
-        setData(res.data);
+        setData([...res.data]);
       }
       return [];
     }

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './style.module.css';
 
 interface FlashCardProps {
   data: {
-    id: number;
+    id: string;
     question: string;
     answer: string;
   };
