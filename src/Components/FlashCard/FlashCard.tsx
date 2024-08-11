@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import styles from './style.module.css';
 
-const FlashCard = ({data}) => {
+interface FlashCardProps {
+  data: {
+    id: number;
+    question: string;
+    answer: string;
+  };
+}
+
+
+const FlashCard = ({data}:FlashCardProps) => {
   const [clicked, setClicked] = useState(false);
 
   console.log(clicked);
