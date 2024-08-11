@@ -40,8 +40,8 @@ function App() {
   }
 
   return (
-    <div className='min-h-screen flex items-center justify-between px-3 sm:px-8 overflow-hidden'>
-      <button className=' w-10 h-10' onClick={handlePrev}>
+    <div className='min-h-screen max-w-[1400px] mx-auto flex items-center justify-between px-3 sm:px-8 overflow-hidden'>
+      <button className={` w-10 h-10  ${current==0?'opacity-50':'opacity-100'}`} onClick={handlePrev}>
         <LeftArrow/>
       </button>
 
@@ -58,7 +58,7 @@ function App() {
         </div>
       </div>
 
-      <button className=' w-10 h-10 ' onClick={handleNext}>
+      <button className={` w-10 h-10  ${current==data.length-1?'opacity-50':'opacity-100'}`} onClick={handleNext}>
         <RightArrow/>
       </button>
     </div>
