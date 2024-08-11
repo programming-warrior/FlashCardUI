@@ -30,24 +30,33 @@ function App() {
   const [current, setCurrent] = useState(0);
 
   const handlePrev = () => {
-    setCurrent((prev) => (prev === 0 ? data.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ? prev : prev - 1));
   }
 
   const handleNext = () => {
-    setCurrent((prev) => (prev === data.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev === data.length - 1 ? prev : prev + 1));
   }
 
   return (
-    <div className='min-h-screen flex items-center justify-between px-6 overflow-hidden'>
-      <button className='mr-2' onClick={handlePrev}>
+    <div className='min-h-screen flex items-center justify-between px-8 overflow-hidden'>
+      <button className='mr-4' onClick={handlePrev}>
         prev
       </button>
 
-      <div className='w-full flex justify-center'>
-        <FlashCard data={data[current]} key={data[current].id} />
+      <div className="w-full overflow-hidden border border-black">
+        <div
+          className="flex transition-transform"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {data.map((d,) => (
+            <div className="min-w-full flex justify-center transition-transform" key={d.id}>
+              <FlashCard data={d} />
+            </div>
+          ))}
+        </div>
       </div>
 
-      <button className='ml-2' onClick={handleNext}>
+      <button className='ml-4' onClick={handleNext}>
         next
       </button>
     </div>
